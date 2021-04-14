@@ -9,6 +9,10 @@ canvas.width = 800;
 canvas.height = 600;
 const sprite = new Image();
 sprite.src = 'img/animsheet.png';
+const logo = new Image();
+logo.src = 'img/logo.png';
+const pubLogo = new Image();
+pubLogo.src = 'img/505-logo.png';
 
 let mouseDown = false;
 let angle = 0;
@@ -93,6 +97,8 @@ function animate() {
         ctx.fillText('Score: ' + score, 10, 40);
         ctx.fillStyle = 'black';
         ctx.fillText('Best: ' + highScore, 10, 70);
+        ctx.drawImage(logo, 0, 0, 177, 147, canvas.width / 2 - 177 / 4, 50 - 147 / 4, 177 / 2, 147 / 2);
+        ctx.drawImage(pubLogo, 0, 0, 4000, 464, canvas.width - 4000 / 30 - 10, canvas.height - 464 / 30 - 10, 4000 / 30, 464 / 30);
         if (handleCollisions(player, towers, canvas, ctx)) {
             gameStatus = 'gameover';
         }

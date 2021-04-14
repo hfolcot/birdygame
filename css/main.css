@@ -1,0 +1,23 @@
+html body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+html body #gameCanvas {
+  height: 600px;
+  width: 800px;
+  border: 1px solid black;
+}
+html body .instructions {
+  margin-top: 25px;
+  font-size: 20px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}

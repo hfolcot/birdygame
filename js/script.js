@@ -1,6 +1,7 @@
 import Player from '/game1backup/js/player.js';
 import { Tower, handleTowers } from '/game1backup/js/tower.js';
 import { handleCollisions } from '/game1backup/js/collisions.js';
+import { init } from '/game1backup/js/start.js';
 
 let canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
@@ -16,7 +17,7 @@ let gameSpeed = 2;
 let level = 0;
 let gameStatus = 'start';
 let highScore = localStorage.getItem('birdyScore');
-if(!highScore) {
+if (!highScore) {
     highScore = 0;
 }
 
@@ -80,7 +81,7 @@ function animate() {
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, 100);
         ctx.fillStyle = 'red';
-        ctx.font = 'bold 20px Arial';
+        ctx.font = 'bold 20px "Kiwi Maru"';
         ctx.textAlign = "left";
         ctx.fillText('Score: ' + score, 10, 40);
         ctx.fillStyle = 'black';
@@ -100,31 +101,24 @@ function animate() {
         ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.font = "30px Arial";
+        ctx.font = '30px "Kiwi Maru"';
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.fillText("PAUSED", canvas.width / 2, canvas.height / 2);
     }
     if (gameStatus == 'start') {
-        ctx.rect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
-        ctx.fill();
-        ctx.font = '30px "Kiwi Maru"';
-        ctx.fillStyle = "white";
-        ctx.textAlign = "center";
-        ctx.fillText("Get Birdy as far as you can", canvas.width / 2, canvas.height / 2);
-        ctx.fillText("Click to start", canvas.width / 2, canvas.height / 2 + 40);
+        init(ctx, canvas);
     }
     if (gameStatus == 'gameover') {
-        if(score > highScore){
+        if (score > highScore) {
             localStorage.setItem('birdyScore', score);
         }
-        
+
         ctx.rect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
         ctx.fill();
 
-        ctx.font = "30px Arial";
+        ctx.font = '30px "Kiwi Maru"';
         ctx.fillStyle = "white";
         ctx.textAlign = "center";
         ctx.fillText("YOU CRASHED!", canvas.width / 2, canvas.height / 2);

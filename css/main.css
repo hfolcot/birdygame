@@ -4,6 +4,7 @@ html body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  font-family: 'Kiwi Maru', serif;
 }
 html body #gameCanvas {
   height: 600px;

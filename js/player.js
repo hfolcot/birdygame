@@ -1,6 +1,3 @@
-const sprite = new Image();
-sprite.src = 'img/animsheet.png';
-
 export default class Player {
     constructor() {
         this.x = 150,
@@ -31,7 +28,7 @@ export default class Player {
             this.flap(frame);
         }
     }
-    draw(ctx) {
+    draw(ctx, sprite) {
         ctx.fillStyle = 'red';
         // ctx.fillRect(this.x, this.y, this.width, this.height); //Hit box
         ctx.drawImage(sprite, this.frameX * this.ogWidth, 0, this.ogWidth, this.ogHeight, this.x -20, this.y -12, this.width * 1.7, this.height * 1.7);

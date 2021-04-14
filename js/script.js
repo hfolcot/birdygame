@@ -7,6 +7,8 @@ let canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = 800;
 canvas.height = 600;
+const sprite = new Image();
+sprite.src = 'img/animsheet.png';
 
 let mouseDown = false;
 let angle = 0;
@@ -20,6 +22,7 @@ let highScore = localStorage.getItem('birdyScore');
 if (!highScore) {
     highScore = 0;
 }
+
 
 
 const player = new Player();
@@ -42,6 +45,10 @@ const BG = {
 }
 
 function start() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    player.vy = 0;
+    player.y = 200;
+    console.log(player);
     mouseDown = false;
     angle = 0;
     hue = 0;
@@ -74,9 +81,9 @@ function animate() {
     if (gameStatus == 'running') {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         handleBackground(gameSpeed + level);
-        handleTowers(canvas, hue, frame, towers, gameSpeed, level, ctx);
+        handleTowers(canvas, towers, gameSpeed, level, ctx);
         player.update(canvas, mouseDown, angle, frame);
-        player.draw(ctx);
+        player.draw(ctx, sprite);
         ctx.strokeRect(0, 0, canvas.width, 100);
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, 100);
@@ -107,7 +114,7 @@ function animate() {
         ctx.fillText("PAUSED", canvas.width / 2, canvas.height / 2);
     }
     if (gameStatus == 'start') {
-        init(ctx, canvas);
+        init(ctx, canvas, sprite);
     }
     if (gameStatus == 'gameover') {
         if (score > highScore) {

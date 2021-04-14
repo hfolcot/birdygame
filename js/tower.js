@@ -28,7 +28,7 @@ export class Tower {
     }
 }
 
-export function handleTowers(canvas, hue, frame, towers, gameSpeed, level, ctx) {
+export function handleTowers(canvas, towers, gameSpeed, level, ctx) {
     
     if(!towers.length || towers.length && towers[0].x < 600) {
         let newTower = new Tower(canvas);

@@ -12,7 +12,7 @@
 <body>
     <canvas id="gameCanvas"></canvas>
 <div class="instructions">
-Click and hold the left mouse button to make Birdy fly higher and let go to make him fall!</div>
+Click and hold the left mouse button to make Kev fly higher and let go to make him fall!</div>
 <script type="module" src="js/script.js"></script>
 </body>
 </html>
